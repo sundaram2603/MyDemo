@@ -12,30 +12,30 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
-    @RequestMapping("/topics")
+    @GetMapping(path = {"/topics"})
     public List<Topic> getAllTopics() {
         return topicService.getAllTopics();
     }
 
-    @RequestMapping("/topics/{name}")
+    @GetMapping(path = {"/topics/{name}"})
     @ResponseStatus(HttpStatus.OK)
     public List<Topic> getTopic(@PathVariable String name) {
         return topicService.getTopic(name);
     }
 
-    @RequestMapping(value = "/topics", method = RequestMethod.POST)
+    @PostMapping(path = {"/topics"})
     @ResponseStatus(HttpStatus.CREATED)
     public void addTopic(@RequestBody Topic topic) {
         topicService.addTopic(topic);
     }
 
-    @RequestMapping(value = "/topics", method = RequestMethod.PUT)
+    @PutMapping(path = {"/topics"})
     @ResponseStatus(HttpStatus.OK)
     public void updateTopic(@RequestBody Topic topic) {
         topicService.updateTopic(topic);
     }
 
-    @RequestMapping(value = "/topics/{name}", method = RequestMethod.DELETE)
+    @DeleteMapping(path = {"/topics/{name}"})
     @ResponseStatus(HttpStatus.OK)
     public void deleteTopic(@PathVariable String name) {
         topicService.deleteTopic(name);
